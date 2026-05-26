@@ -1,34 +1,19 @@
-// Example skeleton for your script.js
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bus Tracker</title>
+<!-- Include Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<h1>Bus Tracking Map</h1>
+<div id="map"></div>
 
-const map = L.map('map').setView([52.52, 0], 13); // Adjust center/zoom
-
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: 'Map data &copy; OpenStreetMap contributors'
-}).addTo(map);
-
-const busMarkers = {};
-
-function fetchBusData() {
-  fetch('pk.eyJ1IjoiNDA0YnJhaW5ub3Rmb3VuZCIsImEiOiJjbXBtMWlscnAxYjh3MnJzN2Z4bWIyY2I3In0.4EgboTXtPSZgAu5fOwelSA') // Replace with your real API URL
-    .then(res => res.json())
-    .then(data => {
-      data.forEach(bus => {
-        if (busMarkers[bus.id]) {
-          // Update existing marker
-          busMarkers[bus.id].setLatLng([bus.lat, bus.lon]);
-        } else {
-          // Create new marker
-          const marker = L.marker([bus.lat, bus.lon]).addTo(map);
-          marker.bindPopup(`Bus ID: ${bus.id}`);
-          busMarkers[bus.id] = marker;
-        }
-      });
-    })
-    .catch(err => console.error('Error fetching bus data:', err));
-}
-
-// Fetch data every 15 seconds
-setInterval(fetchBusData, 15000);
-
-// Initial fetch
-fetchBusData();
+<!-- Include Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
