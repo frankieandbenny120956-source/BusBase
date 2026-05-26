@@ -9,7 +9,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 const busMarkers = {};
 
 function fetchBusData() {
-  fetch('YOUR_API_ENDPOINT') // Replace with your real API URL
+  fetch('pk.eyJ1IjoiNDA0YnJhaW5ub3Rmb3VuZCIsImEiOiJjbXBtMWlscnAxYjh3MnJzN2Z4bWIyY2I3In0.4EgboTXtPSZgAu5fOwelSA') // Replace with your real API URL
     .then(res => res.json())
     .then(data => {
       data.forEach(bus => {
